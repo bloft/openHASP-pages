@@ -1,0 +1,28 @@
+{"page":0,"comment":"----------- page 0 ------- "}
+{"id":1,"obj":"obj"  ,"x":0,"y":0,  "w":140,"h":480,"border_color":"#848a94","border_width":2,"border_side":8,"radius":1,"bg_color":"#673bb7"}
+{"id":11, "obj":"label","x":0,"y":0,  "w":140,"h":60, "parentid":1,"border_color":"#848a94","bg_color":"#5a6173","align":"center","text_color":"white","text":"00:00","text_font":48}
+{"id":12,"obj":"label","x":0,"y":70, "w":140,"h":40, "parentid":1,"border_color":"#848a94","bg_color":"#5a6173","align":"center","text_color":"white","text":"23,3 C"}
+{"id":13,"obj":"btn"  ,"x":0,"y":240,"w":140,"h":60, "parentid":1,"action":{"down": "page 1"},"border_color":"#848a94","border_width":2,"border_side":2,"radius":1,"bg_color":"#000000","text":"\uE2DC","text_color":"white","bg_color":"#673bb7","text_font":38}
+{"id":14,"obj":"btn"  ,"x":0,"y":300,"w":140,"h":60, "parentid":1,"action":{"down": "page 2"},"border_color":"#848a94","border_width":2,"border_side":2,"radius":1,"bg_color":"#000000","text":"\uE599","text_color":"white","bg_color":"#673bb7","text_font":38}
+{"id":15,"obj":"btn"  ,"x":0,"y":360,"w":140,"h":60, "parentid":1,"action":{"down": "page 3"},"border_color":"#848a94","border_width":2,"border_side":2,"radius":1,"bg_color":"#000000","text":"\uE75A","text_color":"white","bg_color":"#673bb7","text_font":38}
+{"id":16,"obj":"btn"  ,"x":0,"y":420,"w":140,"h":60, "parentid":1,"action":{"down": "page 4"},"border_color":"#848a94","border_width":2,"border_side":2,"radius":1,"bg_color":"#000000","text":"\uF11C","text_color":"white","bg_color":"#673bb7","text_font":38}
+
+{"page":1,"comment":"----------- Home ------- "}
+
+{"id":1,"obj":"obj","x":140,"y":0,"w":660,"h":480,"bg_color":"#ffffff"}
+
+{"id":2, "parentid":1,"obj":"obj","x":0,"y":0,"w":660,"h":45,"bg_color":"#c0c0c0", "border_width":2, "border_side":1, "border_color":"#848a94","radius":0}
+{"id":21,"parentid":2,"obj":"label","x":20,"y":00,"w":100,"h":40,"text":"10.3 kW","text_color":"#585858", "align":"left"}
+{"id":22,"parentid":2,"obj":"label","x":540,"y":00,"w":100,"h":40,"text":"100%","text_color":"#585858", "align":"right"}
+
+{"id":3, "parentid":1,"obj":"img","x":20,"y":100,"w":620,"h":140,"src":"L:/yield.png","auto_size":0}
+{"id":31,"parentid":3,"obj":"label","x":0,"y":40,"w":100,"h":50,"text":"10.3","text_color":"magenta", "align":"right"}
+{"id":32,"parentid":3,"obj":"label","x":470,"y":40,"w":100,"h":50,"text":"10.3","text_color":"green", "align":"right"}
+{"id":33,"parentid":3,"obj":"arc","x":240,"y":0,"w":140,"h":140,"radius":70,"min":0,"max":100,"val":30,"line_color":"magenta","line_color10":"green","line_width":7,"line_width10":7,"bg_opa":0,"border_width":0,"start_angle10":270,"end_angle10":269,"value_str":"102.4","value_color":"#585858","value_font":48,"value_ofs_y":-10, "pad_top":0, "pad_bottom":0, "pad_left":0, "pad_right":0}
+
+
+{"id":4, "parentid":1,"obj":"img","x":20,"y":285,"w":620,"h":140,"src":"L:/consumption.png","auto_size":0}
+{"id":41,"parentid":4,"obj":"label","x":0,"y":40,"w":100,"h":50,"text":"10.3","text_color":"blue", "align":"right"}
+{"id":42,"parentid":4,"obj":"label","x":470,"y":40,"w":100,"h":50,"text":"10.3","text_color":"red", "align":"right"}
+{"id":43,"parentid":4,"obj":"arc","x":240,"y":0,"w":140,"h":140,"radius":70,"min":0,"max":100,"val":50, "line_color":"blue","line_color10":"red","line_width":7,"line_width10":7,"bg_opa":0,"border_width":0,"start_angle10":270,"end_angle10":269,"value_str":"32.4","value_color":"#585858","value_font":48,"value_ofs_y":-10, "pad_top":0, "pad_bottom":0, "pad_left":0, "pad_right":0}
+
