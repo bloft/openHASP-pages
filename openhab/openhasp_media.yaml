@@ -1,0 +1,56 @@
+ configuration: {}
+triggers:
+  - id: "1"
+    configuration:
+      itemName: openhasp_Sunton_Music_Control
+    type: core.ItemStateChangeTrigger
+conditions: []
+actions:
+  - inputs: {}
+    id: "2"
+    configuration:
+      type: application/x-groovy
+      script: >-
+        //
+        https://www.openhab.org/javadoc/latest/org/openhab/core/persistence/extensions/persistenceextensions
+
+        // https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/ZonedDateTime.html
+
+
+        def telegram = actions.get("telegram","telegram:telegramBot:8f6cfbef6c");
+
+
+        def devices = itemRegistry.getItem("SpotifyPlayerBridge_ActiveDevices").getState();
+
+        boolean spotify = devices.toString().equals("2006c1e459801ab18401efc719bdd082");
+
+        String mediaControle = spotify ? "SpotifyPlayerBridge_MediaControl" : "KokkenHojtaler_MediaControl";
+
+
+        def item = itemRegistry.getItem("openhasp_Sunton_Music_Control");
+
+        def currentState = item.getState();
+
+
+        switch(currentState) {
+          case -1:
+            break;
+          case 0:
+            def mute = itemRegistry.getItem("Kokken_Hojtaler_Mute").getState().toString();
+            events.sendCommand("Kokken_Hojtaler_Mute", mute.equals("OFF") ? "ON" : "OFF")
+            break;
+          case 1:
+            events.sendCommand(mediaControle, "PREVIOUS")
+            break;
+          case 2:
+            def player = itemRegistry.getItem(mediaControle).getState().toString();
+            events.sendCommand(mediaControle, player.equals("PLAY") ? "PAUSE" : "PLAY")
+            break;
+          case 3:
+            events.sendCommand(mediaControle, "NEXT")
+            break;
+          default:
+            telegram.sendTelegram("Unknown: " + scene);
+            break;
+        }
+    type: script.ScriptAction

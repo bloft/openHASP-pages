@@ -1,0 +1,66 @@
+ configuration: {}
+triggers:
+  - id: "2"
+    configuration:
+      itemName: openhasp_Sunton_GardinBio
+    type: core.ItemStateChangeTrigger
+  - id: "3"
+    configuration:
+      itemName: openhasp_Sunton_KokkenGardin
+    type: core.ItemStateChangeTrigger
+  - id: "4"
+    configuration:
+      itemName: openhasp_Sunton_Gardin_Arthur
+    type: core.ItemStateChangeTrigger
+  - id: "5"
+    configuration:
+      itemName: openhasp_Sunton_Gardin_Athena
+    type: core.ItemStateChangeTrigger
+conditions: []
+actions:
+  - inputs: {}
+    id: "1"
+    configuration:
+      type: application/x-groovy
+      script: >-
+        def telegram =
+        actions.get("telegram","telegram:telegramBot:8f6cfbef6c");
+
+
+        try {
+          def map = [:];
+          map["openhasp_Sunton_GardinBio"] = "BioGardin_State"
+          map["openhasp_Sunton_KokkenGardin"] = "Kokkengardin_BlindsControl"
+          map["openhasp_Sunton_Gardin_Athena"] = "AthenaGardin_Control"
+          map["openhasp_Sunton_Gardin_Arthur"] = "Arthurgardin_BlindsControl"
+
+          map.each{entry ->
+            switch(itemRegistry.getItem(entry.key).getState()) {
+              case 0:
+                events.sendCommand(entry.value, "UP")
+                break;
+              case 1:
+                events.sendCommand(entry.value, "STOP")
+                break;
+              case 2:
+                events.sendCommand(entry.value, "DOWN")
+                break;
+              default:
+                break;
+            }
+          }
+
+
+
+        } catch (Exception e) {
+          String line = "";
+          e.getStackTrace().each {
+            if(it.getFileName() != null && it.getFileName().matches("Script.*\\.groovy")) {
+              line = Integer.toString(it.getLineNumber());
+            }
+          }
+          telegram.sendTelegram(String.format("Exception(line: %s): %s", line, e.getMessage()));
+
+          // ;
+        }
+    type: script.ScriptAction

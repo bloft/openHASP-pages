@@ -1,0 +1,137 @@
+ configuration: {}
+triggers:
+  - id: "1"
+    configuration:
+      cronExpression: 0/5 * * * * ? *
+    type: timer.GenericCronTrigger
+conditions: []
+actions:
+  - inputs: {}
+    id: "2"
+    configuration:
+      type: application/x-groovy
+      script: >-
+        import org.openhab.core.persistence.extensions.*;
+
+        def telegram = actions.get("telegram","telegram:telegramBot:8f6cfbef6c");
+
+        def mqtt = actions.get("mqtt","mqtt:broker:1779aaf1ce")
+
+
+        // hasp/broadcast/command/
+
+
+        def sendMqtt = {int page, int id, String att, Object value -> mqtt.publishMQTT(String.format("hasp/plates/command/p%sb%s.%s", page, id, att), value.toString()); }
+
+        def sendMqttItem = {int page, int id, String att, String item, String format -> sendMqtt(page, id, att, itemRegistry.getItem(item).getState().format(format)); }
+
+        def sendText = {int page, int id, String item, String format -> sendMqttItem(page, id, "text", item, format); }
+
+        def sendVal = {int page, int id, String item -> sendMqttItem(page, id, "val", item, "%f"); }
+
+
+        def sendWatt = {int page, int id, Object value ->
+          if(value > 1000 || value < -1000) {
+            sendMqtt(page, id, "text", String.format("%.1f kW", value/1000))
+          } else {
+            sendMqtt(page, id, "text", String.format("%.0f W", value/1))
+          }
+            if(value >= 0) {
+            sendMqtt(page, id, "text_color", "green")
+          } else {
+            sendMqtt(page, id, "text_color", "red")
+          }
+        }
+
+
+        def toTimeString = {int s -> String.format("%d:%02d", (int)(s / 60), s % 60)}
+
+
+        try {
+          sendText(0, 12, "DanfossAir_OutdoorTemperature", "%.1f °C");
+          //telegram.sendTelegram("test " + itemRegistry.getItem("Kokken_Hojtaler_Current_Time").getState().intValue());
+          //telegram.sendTelegram("test " + itemRegistry.getItem("Kokken_Hojtaler_Duration").getState().toUnit("s"));
+
+          def yield = itemRegistry.getItem("PV_Daily").getState().floatValue()
+
+          def exported = PersistenceExtensions.deltaSince(itemRegistry.getItem("Pv_Grid_Exported"), ZonedDateTime.now().minusHours(ZonedDateTime.now().getHour())).floatValue();
+          def accumulated = PersistenceExtensions.deltaSince(itemRegistry.getItem("Pv_GRID_ACCUMULATED"), ZonedDateTime.now().minusHours(ZonedDateTime.now().getHour())).floatValue();
+          def batCharged = PersistenceExtensions.deltaSince(itemRegistry.getItem("PV_Battery_total_charge"), ZonedDateTime.now().minusHours(ZonedDateTime.now().getHour())).floatValue();
+          def batDischarged = PersistenceExtensions.deltaSince(itemRegistry.getItem("PV_Battery_total_discharge"), ZonedDateTime.now().minusHours(ZonedDateTime.now().getHour())).floatValue();
+
+          def inputPower = itemRegistry.getItem("Pv_Input_power").getState();
+          def gridPower = itemRegistry.getItem("PV_grid_power").getState();
+          def batPower = itemRegistry.getItem("Pv_Batteri_chargedischarge").getState();
+
+          def priceEuro = itemRegistry.getItem("energidataservice_Priceeuro").getState();
+
+
+          sendWatt(1, 21, gridPower);
+          sendWatt(1, 31, inputPower);
+          sendText(1, 41, "PV_bat_soc", "%.0f %%");
+          sendWatt(1, 42, batPower);
+          sendWatt(1, 51, (inputPower - batPower - gridPower));
+
+          sendText(1, 61, "EL_Pris", "%.2f kr/kWh");
+          sendMqtt(1, 62, "text", String.format("%.2f kr/kWh", priceEuro/134.4086 - 0.06765))
+
+          sendWatt(1, 82, itemRegistry.getItem("Varme_watts").getState());
+
+          sendMqtt(2, 21, "text", String.format("%.1f kW", inputPower/1000))
+          sendText(2, 22, "PV_bat_soc", "%.0f %%");
+
+          sendMqtt(2, 31, "text", String.format("%.1f", yield - exported));
+          sendMqtt(2, 32, "text", String.format("%.2f", exported));
+          sendMqtt(2, 33, "value_str", String.format("%.1f", yield));
+          sendMqtt(2, 33, "val", String.format("%.1f", exported));
+          sendMqtt(2, 33, "max", String.format("%.1f", exported + (yield - exported)));
+
+          sendMqtt(2, 41, "text", String.format("%.1f", yield - exported - (batCharged - batDischarged)));
+          sendMqtt(2, 42, "text", String.format("%.2f", accumulated));
+          sendMqtt(2, 43, "value_str", String.format("%.1f",  yield - exported - (batCharged - batDischarged) + accumulated));
+          sendMqtt(2, 43, "val", String.format("%.1f", accumulated));
+          sendMqtt(2, 43, "max", String.format("%.1f", accumulated + (yield - exported - (batCharged - batDischarged))));
+
+
+          try {
+            def chargerPower = itemRegistry.getItem("Charger_Power_All").getState().floatValue();
+
+            sendWatt(1, 92, chargerPower);
+
+            sendMqtt(5, 5, "value_str", String.format("%.1f kW", chargerPower/1000))
+            sendMqtt(5, 5, "val", String.format("%.1f", chargerPower/1000))
+
+            def chargerPWM = itemRegistry.getItem("Charger_PWM").getState();
+            switch(chargerPWM) {
+              case "WAITING_FOR_CAR":
+                sendMqtt(5, 61, "text", "Waiting for car");
+                sendMqtt(5, 6, "bg_color", "#f2cc0c");
+                break;
+              case "COMPLETE":
+                sendMqtt(5, 61, "text", "Complete");
+                sendMqtt(5, 6, "bg_color", "#a352cc");
+                break;
+              case "CHARGING":
+                sendMqtt(5, 61, "text", "Charging");
+                sendMqtt(5, 6, "bg_color", "#56a64b");
+                break;
+              case "IDLE":
+                sendMqtt(5, 61, "text", "Idle");
+                sendMqtt(5, 6, "bg_color", "#d8d8d8");
+                break;
+            }
+          } catch (Exception e) {}
+
+
+        } catch (InterruptedIOException e) {
+          telegram.sendTelegram("Wee");
+        } catch (Exception e) {
+          String line = "";
+          e.getStackTrace().each {
+            if(it.getFileName() != null && it.getFileName().matches("Script.*\\.groovy")) {
+              line = Integer.toString(it.getLineNumber());
+            }
+          }
+          telegram.sendTelegram(String.format("Exception(line: %s): %s", line, e.getMessage()));
+        }
+    type: script.ScriptAction

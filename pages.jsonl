@@ -1,28 +1,148 @@
 {"page":0,"comment":"----------- page 0 ------- "}
-{"id":1,"obj":"obj"  ,"x":0,"y":0,  "w":140,"h":480,"border_color":"#848a94","border_width":2,"border_side":8,"radius":1,"bg_color":"#673bb7"}
-{"id":11, "obj":"label","x":0,"y":0,  "w":140,"h":60, "parentid":1,"border_color":"#848a94","bg_color":"#5a6173","align":"center","text_color":"white","text":"00:00","text_font":48}
+{"id":1,"obj":"obj"  ,"x":0,"y":0,  "w":140,"h":480,"border_color":"#848a94","border_width":2,"border_side":8,"radius":1,"bg_color":"#673bb7", "bg_grad_dir":0}
+{"id":18, "obj":"label","x":0,"y":0,  "w":140,"h":60, "parentid":1,"border_color":"#848a94","bg_color":"#5a6173","align":"center","text_color":"white","text":"00:00","text_font":48, "template": "%H:%M"}
 {"id":12,"obj":"label","x":0,"y":70, "w":140,"h":40, "parentid":1,"border_color":"#848a94","bg_color":"#5a6173","align":"center","text_color":"white","text":"23,3 C"}
-{"id":13,"obj":"btn"  ,"x":0,"y":240,"w":140,"h":60, "parentid":1,"action":{"down": "page 1"},"border_color":"#848a94","border_width":2,"border_side":2,"radius":1,"bg_color":"#000000","text":"\uE2DC","text_color":"white","bg_color":"#673bb7","text_font":38}
-{"id":14,"obj":"btn"  ,"x":0,"y":300,"w":140,"h":60, "parentid":1,"action":{"down": "page 2"},"border_color":"#848a94","border_width":2,"border_side":2,"radius":1,"bg_color":"#000000","text":"\uE599","text_color":"white","bg_color":"#673bb7","text_font":38}
-{"id":15,"obj":"btn"  ,"x":0,"y":360,"w":140,"h":60, "parentid":1,"action":{"down": "page 3"},"border_color":"#848a94","border_width":2,"border_side":2,"radius":1,"bg_color":"#000000","text":"\uE75A","text_color":"white","bg_color":"#673bb7","text_font":38}
-{"id":16,"obj":"btn"  ,"x":0,"y":420,"w":140,"h":60, "parentid":1,"action":{"down": "page 4"},"border_color":"#848a94","border_width":2,"border_side":2,"radius":1,"bg_color":"#000000","text":"\uF11C","text_color":"white","bg_color":"#673bb7","text_font":38}
+{"id":13,"obj":"btn"  ,"x":0,"y":180,"w":140,"h":60, "parentid":1,"action":{"down": "page 1"},"border_color":"#848a94","border_width":2,"border_side":2,"radius":1,"bg_color":"#000000","text":"\uE2DC","text_color":"white","bg_color":"#673bb7","text_font":38, "bg_grad_dir":0}
+{"id":14,"obj":"btn"  ,"x":0,"y":240,"w":140,"h":60, "parentid":1,"action":{"down": "page 2"},"border_color":"#848a94","border_width":2,"border_side":2,"radius":1,"bg_color":"#000000","text":"\uE599","text_color":"white","bg_color":"#673bb7","text_font":38, "bg_grad_dir":0}
+{"id":15,"obj":"btn"  ,"x":0,"y":300,"w":140,"h":60, "parentid":1,"action":{"down": "page 3"},"border_color":"#848a94","border_width":2,"border_side":2,"radius":1,"bg_color":"#000000","text":"\uE75A","text_color":"white","bg_color":"#673bb7","text_font":38, "bg_grad_dir":0}
+{"id":16,"obj":"btn"  ,"x":0,"y":360,"w":140,"h":60, "parentid":1,"action":{"down": "page 4"},"border_color":"#848a94","border_width":2,"border_side":2,"radius":1,"bg_color":"#000000","text":"\uF11C","text_color":"white","bg_color":"#673bb7","text_font":38, "bg_grad_dir":0}
+{"id":17,"obj":"btn"  ,"x":0,"y":420,"w":140,"h":60, "parentid":1,"action":{"down": "page 5"},"border_color":"#848a94","border_width":2,"border_side":2,"radius":1,"bg_color":"#000000","text":"\uE10B","text_color":"white","bg_color":"#673bb7","text_font":38, "bg_grad_dir":0}
 
 {"page":1,"comment":"----------- Home ------- "}
+{"id":1,"obj":"obj","x":140,"y":0,"w":660,"h":480,"bg_color":"#ffffff", "bg_grad_dir":0}
 
-{"id":1,"obj":"obj","x":140,"y":0,"w":660,"h":480,"bg_color":"#ffffff"}
+{"parentid":1, "id":3, "obj":"obj",  "x":20,"y":20,"w":300,"h":200, "bg_color":"#FFFFFF", "bg_grad_dir":0, "radius":0, "border_side":0}
+{"parentid":3, "id":32,"obj":"label","x":0,"y":0,"w":300,"h":60, "text":"Solar Generator","text_color":"#673bb7", "align":"left","text_font":40}
+{"parentid":3, "id":33,"obj":"label","x":10,"y":45,"w":200,"h":60, "text":"Current:","text_color":"#585858", "align":"left","text_font":26}
+{"parentid":3, "id":31,"obj":"label","x":10,"y":55,"w":280,"h":70, "text":"- kW","text_color":"#585858", "align":"right","text_font":65}
+{"parentid":3, "id":34,"obj":"label","x":0,"y":70,"w":100,"h":100, "text":"\uE5A8","text_color":"#d4af42", "align":"center","text_font":100, "text_opa": 75}
+{"parentid":3, "id":62,"obj":"label","x":10,"y":145,"w":280,"h":60, "text":"- kr/kWh","text_color":"#585858", "align":"right","text_font":26}
 
-{"id":2, "parentid":1,"obj":"obj","x":0,"y":0,"w":660,"h":45,"bg_color":"#c0c0c0", "border_width":2, "border_side":1, "border_color":"#848a94","radius":0}
-{"id":21,"parentid":2,"obj":"label","x":20,"y":00,"w":100,"h":40,"text":"10.3 kW","text_color":"#585858", "align":"left"}
+{"parentid":1, "id":91, "obj":"obj",  "x":330,"y":25,"w":3,"h":170, "bg_color":"#848a94", "bg_grad_dir":0, "radius":1, "border_side":0}
+
+{"parentid":1, "id":2, "obj":"obj",  "x":350,"y":20,"w":300,"h":200,"bg_color":"#FFFFFF", "bg_grad_dir":0, "radius":0, "border_side":0}
+{"parentid":2, "id":22,"obj":"label","x":0,"y":0,"w":300,"h":60, "text":"Grid Usage","text_color":"#673bb7", "align":"left","text_font":40}
+{"parentid":2, "id":23,"obj":"label","x":10,"y":45,"w":200,"h":60, "text":"Current:","text_color":"#585858", "align":"left","text_font":26}
+{"parentid":2, "id":21,"obj":"label","x":10,"y":55,"w":280,"h":70, "text":"- kW","text_color":"#585858", "align":"right","text_font":65}
+{"parentid":2, "id":24,"obj":"label","x":0,"y":70,"w":100,"h":100, "text":"\uED3E","text_color":"#d4af42", "align":"center","text_font":100, "text_opa": 75}
+{"parentid":2, "id":61,"obj":"label","x":10,"y":145,"w":280,"h":60, "text":"- kr/kWh","text_color":"#585858", "align":"right","text_font":26}
+
+{"parentid":1, "id":97, "obj":"obj",  "x":15,"y":215,"w":630,"h":3, "bg_color":"#848a94", "bg_grad_dir":0, "radius":1, "border_side":0}
+
+{"parentid":1, "id":4, "obj":"obj", "x":20,"y":230,"w":200,"h":250,"bg_color":"#FFFFFF", "bg_grad_dir":0, "radius":0, "border_side":0}
+{"parentid":4, "id":44,"obj":"label","x":0,"y":0,"w":200,"h":60, "text":"Battery","text_color":"#673bb7", "align":"left","text_font":40}
+{"parentid":4, "id":43,"obj":"label","x":10,"y":45,"w":200,"h":60, "text":"Current:","text_color":"#585858", "align":"left","text_font":26}
+{"parentid":4, "id":41,"obj":"label","x":0,"y":70,"w":200,"h":70, "text":"- %","text_color":"#585858", "align":"right","text_font":65}
+{"parentid":4, "id":45,"obj":"label","x":0,"y":125,"w":100,"h":100, "text":"\uF2A3","text_color":"#d4af42", "align":"center","text_font":100, "text_opa": 75}
+{"parentid":4, "id":42,"obj":"label","x":100,"y":200,"w":100,"h":60, "text":"- kW","text_color":"#585858", "align":"right","text_font":32}
+
+{"parentid":1, "id":93, "obj":"obj",  "x":235,"y":235,"w":3,"h":230, "bg_color":"#848a94", "bg_grad_dir":0, "radius":1, "border_side":0}
+
+{"parentid":1, "id":5, "obj":"obj",  "x":250,"y":230,"w":400,"h":250,"bg_color":"#FFFFFF", "bg_grad_dir":0, "radius":0, "border_side":0}
+{"parentid":5, "id":52,"obj":"label","x":0,"y":0,"w":400,"h":60, "text":"Energi Consumption","text_color":"#673bb7", "align":"left","text_font":40}
+{"parentid":5, "id":53,"obj":"label","x":10,"y":45,"w":200,"h":60, "text":"Current:","text_color":"#585858", "align":"left","text_font":26}
+{"parentid":5, "id":51,"obj":"label","x":10,"y":55,"w":380,"h":70, "text":"- kW","text_color":"#585858", "align":"right","text_font":65}
+{"parentid":5, "id":54,"obj":"label","x":0,"y":75,"w":100,"h":100, "text":"\uE6A1","text_color":"#d4af42", "align":"center","text_font":100, "text_opa": 75}
+
+{"parentid":5, "id":94, "obj":"obj",  "x":10,"y":195,"w":180,"h":3, "bg_color":"#848a94", "bg_grad_dir":0, "radius":1, "border_side":0}
+{"parentid":5, "id":95, "obj":"obj",  "x":210,"y":195,"w":180,"h":3, "bg_color":"#848a94", "bg_grad_dir":0, "radius":1, "border_side":0}
+{"parentid":5, "id":96, "obj":"obj",  "x":200,"y":205,"w":3,"h":35, "bg_color":"#848a94", "bg_grad_dir":0, "radius":1, "border_side":0}
+
+{"parentid":5, "id":55,"obj":"label","x":10,"y":200,"w":180,"h":60, "text":"\uE438","text_color":"#585858", "align":"left","text_font":36, "text_opa": 75}
+{"parentid":5, "id":82,"obj":"label","x":0,"y":200,"w":180,"h":60, "text":"- kW","text_color":"#585858", "align":"right","text_font":32}
+
+{"parentid":5, "id":56,"obj":"label","x":210,"y":200,"w":180,"h":60, "text":"\uE10B","text_color":"#585858", "align":"left","text_font":36, "text_opa": 75}
+{"parentid":5, "id":92,"obj":"label","x":200,"y":200,"w":180,"h":60, "text":"- kW","text_color":"#585858", "align":"right","text_font":32}
+
+{"page":2,"comment":"----------- Pv Page ------- "}
+{"id":1,"obj":"obj","x":140,"y":0,"w":660,"h":480,"bg_color":"#ffffff", "bg_grad_dir":0, "radius":0}
+
+{"id":2, "parentid":1,"obj":"obj","x":0,"y":0,"w":660,"h":45,"bg_color":"#e1e1e1", "border_width":2, "border_side":1, "border_color":"#848a94","radius":0, "bg_grad_dir":0}
+{"id":21,"parentid":2,"obj":"label","x":20,"y":00,"w":100,"h":40,"text":"- kW","text_color":"#585858", "align":"left"}
 {"id":22,"parentid":2,"obj":"label","x":540,"y":00,"w":100,"h":40,"text":"100%","text_color":"#585858", "align":"right"}
 
 {"id":3, "parentid":1,"obj":"img","x":20,"y":100,"w":620,"h":140,"src":"L:/yield.png","auto_size":0}
-{"id":31,"parentid":3,"obj":"label","x":0,"y":40,"w":100,"h":50,"text":"10.3","text_color":"magenta", "align":"right"}
-{"id":32,"parentid":3,"obj":"label","x":470,"y":40,"w":100,"h":50,"text":"10.3","text_color":"green", "align":"right"}
-{"id":33,"parentid":3,"obj":"arc","x":240,"y":0,"w":140,"h":140,"radius":70,"min":0,"max":100,"val":30,"line_color":"magenta","line_color10":"green","line_width":7,"line_width10":7,"bg_opa":0,"border_width":0,"start_angle10":270,"end_angle10":269,"value_str":"102.4","value_color":"#585858","value_font":48,"value_ofs_y":-10, "pad_top":0, "pad_bottom":0, "pad_left":0, "pad_right":0}
+{"id":31,"parentid":3,"obj":"label","x":0,"y":40,"w":95,"h":50,"text":"-","text_color":"magenta", "align":"right","text_font":36}
+{"id":32,"parentid":3,"obj":"label","x":475,"y":40,"w":100,"h":50,"text":"-","text_color":"green", "align":"right","text_font":36}
+{"id":33,"parentid":3,"obj":"arc","x":240,"y":0,"w":140,"h":140,"radius":70,"min":0,"max":100,"val":30,"line_color":"magenta","line_color10":"green","line_width":7,"line_width10":7,"bg_opa":0,"border_width":0,"start_angle10":270,"end_angle10":269,"value_str":"-","value_color":"#585858","value_font":48,"value_ofs_y":-10, "pad_top":0, "pad_bottom":0, "pad_left":0, "pad_right":0}
 
 
 {"id":4, "parentid":1,"obj":"img","x":20,"y":285,"w":620,"h":140,"src":"L:/consumption.png","auto_size":0}
-{"id":41,"parentid":4,"obj":"label","x":0,"y":40,"w":100,"h":50,"text":"10.3","text_color":"blue", "align":"right"}
-{"id":42,"parentid":4,"obj":"label","x":470,"y":40,"w":100,"h":50,"text":"10.3","text_color":"red", "align":"right"}
-{"id":43,"parentid":4,"obj":"arc","x":240,"y":0,"w":140,"h":140,"radius":70,"min":0,"max":100,"val":50, "line_color":"blue","line_color10":"red","line_width":7,"line_width10":7,"bg_opa":0,"border_width":0,"start_angle10":270,"end_angle10":269,"value_str":"32.4","value_color":"#585858","value_font":48,"value_ofs_y":-10, "pad_top":0, "pad_bottom":0, "pad_left":0, "pad_right":0}
+{"id":41,"parentid":4,"obj":"label","x":0,"y":40,"w":95,"h":50,"text":"-","text_color":"blue", "align":"right","text_font":36}
+{"id":42,"parentid":4,"obj":"label","x":475,"y":40,"w":100,"h":50,"text":"-","text_color":"red", "align":"right","text_font":36}
+{"id":43,"parentid":4,"obj":"arc","x":240,"y":0,"w":140,"h":140,"radius":70,"min":0,"max":100,"val":50, "line_color":"blue","line_color10":"red","line_width":7,"line_width10":7,"bg_opa":0,"border_width":0,"start_angle10":270,"end_angle10":269,"value_str":"-","value_color":"#585858","value_font":48,"value_ofs_y":-10, "pad_top":0, "pad_bottom":0, "pad_left":0, "pad_right":0}
 
+
+
+{"page":3,"comment":"----------- Musik ------- "}
+{"id":1,"obj":"obj","x":140,"y":0,"w":660,"h":480,"bg_color":"#ffffff", "bg_grad_dir":0}
+
+{"id":2,"parentid":1,"obj":"img","x":370,"y":10,"w":266,"h":266, "src":"http://192.168.1.10:8082/myimage/Kokken_Hojtaler_Image?w=266&h=266", "auto_size":0}
+
+{"id":3, "parentid":1,"obj":"label","x":50,"y":30,"w":550,"h":90,"text":"Title:","text_color":"#7D7D7D","text_font":32}
+{"id":31, "parentid":3,"obj":"label","x":15,"y":40,"w":520,"h":50,"text":"{title}","text_color":"black","text_font":36}
+
+{"id":4, "parentid":1,"obj":"label","x":50,"y":140,"w":550,"h":90,"text":"Artist:","text_color":"#7D7D7D","text_font":32}
+{"id":41, "parentid":4,"obj":"label","x":15,"y":40,"w":520,"h":50,"text":"{artist}","text_color":"black","text_font":36}
+
+{"id":6,"parentid":1,"obj":"obj", "x": 25,"y":300,"w":610,"h":50, "bg_opa":0,"border_side":0,"comment":"----------- Progress ------- "}
+{"id":61,"parentid":6,"obj":"bar","x":0,"y":20,"w":510,"h":10,"min":0,"max":100,"bg_color10":"#673bb7","bg_opa10":255,"bg_opa":100,"border_opa":0,"pad_top":0,"pad_bottom":0,"pad_left":0,"pad_right":0,"bg_grad_dir10":0, "val":50}
+{"id":62,"parentid":6,"obj":"label","x":520,"y":0,"w":80,"h":50,"text":"00:00","text_color":"#585858", "align":"left"}
+
+{"id":7,"parentid":1,"obj":"obj", "x": 25,"y":360,"w":610,"h":50, "bg_opa":0,"border_side":0}
+{"id":71,"parentid":7,"obj":"btnmatrix","x":0,"y":0,"w":610,"h":50,"options":["\uE75F", "\uE4AE", "\uE3E4", "\uE4AD"],"toggle":0,"one_check":0,"border_side":0, "bg_opa":0, "bg_color40":"#673bb7", "bg_grad_dir40":0,"radius40":1, "pad_top":0,"pad_bottom":0,"pad_left":0,"pad_right":0, "bg_grad_dir":0, "bg_color41":"#673bb7", "bg_color42":"black", "bg_color43":"black"}
+
+{"id":8, "parentid":1,"obj":"obj","x":30,"y":423,"w":600,"h":40,"bg_color":"#ffffff","border_side":0, "bg_grad_dir":0}
+{"id":81, "parentid":8,"obj":"label","x":0,"y":0,"w":30,"h":40,"text":"\uE580","text_font":32,"text_color":"#7D7D7D"}
+{"id":82, "parentid":8,"obj":"label","x":570,"y":0,"w":30,"h":40,"text":"\uE57E","text_font":32,"text_color":"#7D7D7D"}
+{"id":83, "parentid":8,"obj":"slider","x":60,"y":14,"w":480,"h":20,"min":0,"max":20, "val":5,"bg_color10":"#673bb7","bg_opa10":255,"bg_opa":100}
+
+
+
+
+{"page":4,"comment":"----------- Gardin ------- "}
+{"id":1,"obj":"obj","x":140,"y":0,"w":660,"h":480,"bg_color":"#ffffff", "bg_grad_dir":0}
+
+
+
+{"id":2,"parentid":1,"obj":"obj","x":30,"y":30,"w":600,"h":55,"bg_color":"#e1e1e1", "border_width":2, "border_side":15, "border_color":"#848a94","radius":0, "bg_grad_dir":0, "bg_grad_dir":0}
+{"id":21,"parentid":2,"obj":"label","x":10,"y":5,"w":300,"h":50,"text":"Bio Gardin ","text_color":"#585858", "align":"left"}
+{"id":22,"parentid":2,"obj":"btnmatrix","x":350,"y":0,"w":250,"h":55,"options":["\uE05D", "\uE4DB", "\uE045"],"toggle":0,"one_check":0,"border_side":0, "bg_opa":0, "bg_color40":"#673bb7", "bg_grad_dir40":0,"radius40":1, "pad_top":0,"pad_bottom":0,"pad_left":0,"pad_right":0, "bg_grad_dir":0, "bg_color41":"#673bb7", "bg_color42":"black", "bg_color43":"black"}
+
+{"id":3,"parentid":1,"obj":"obj","x":30,"y":100,"w":600,"h":55,"bg_color":"#e1e1e1", "border_width":2, "border_side":15, "border_color":"#848a94","radius":0, "bg_grad_dir":0, "bg_grad_dir":0}
+{"id":31,"parentid":3,"obj":"label","x":10,"y":5,"w":300,"h":50,"text":"Køkken Gardin ","text_color":"#585858", "align":"left"}
+{"id":32,"parentid":3,"obj":"btnmatrix","x":350,"y":0,"w":250,"h":55,"options":["\uE05D", "\uE4DB", "\uE045"],"toggle":1,"one_check":1,"border_side":0, "bg_opa":0, "bg_color40":"#673bb7", "bg_grad_dir40":0,"radius40":1, "pad_top":0,"pad_bottom":0,"pad_left":0,"pad_right":0, "bg_grad_dir":0, "bg_color41":"#673bb7", "bg_color42":"black", "bg_color43":"black"}
+
+{"id":4,"parentid":1,"obj":"obj","x":30,"y":170,"w":600,"h":55,"bg_color":"#e1e1e1", "border_width":2, "border_side":15, "border_color":"#848a94","radius":0, "bg_grad_dir":0, "bg_grad_dir":0}
+{"id":41,"parentid":4,"obj":"label","x":10,"y":5,"w":300,"h":50,"text":"Athena Gardin ","text_color":"#585858", "align":"left"}
+{"id":42,"parentid":4,"obj":"btnmatrix","x":350,"y":0,"w":250,"h":55,"options":["\uE05D", "\uE4DB", "\uE045"],"toggle":1,"one_check":1,"border_side":0, "bg_opa":0, "bg_color40":"#673bb7", "bg_grad_dir40":0,"radius40":1, "pad_top":0,"pad_bottom":0,"pad_left":0,"pad_right":0, "bg_grad_dir":0, "bg_color41":"#673bb7", "bg_color42":"black", "bg_color43":"black"}
+
+{"id":5,"parentid":1,"obj":"obj","x":30,"y":240,"w":600,"h":55,"bg_color":"#e1e1e1", "border_width":2, "border_side":15, "border_color":"#848a94","radius":0, "bg_grad_dir":0, "bg_grad_dir":0}
+{"id":51,"parentid":5,"obj":"label","x":10,"y":5,"w":300,"h":50,"text":"Arthur Gardin ","text_color":"#585858", "align":"left"}
+{"id":52,"parentid":5,"obj":"btnmatrix","x":350,"y":0,"w":250,"h":55,"options":["\uE05D", "\uE4DB", "\uE045"],"toggle":1,"one_check":1,"border_side":0, "bg_opa":0, "bg_color40":"#673bb7", "bg_grad_dir40":0,"radius40":1, "pad_top":0,"pad_bottom":0,"pad_left":0,"pad_right":0, "bg_grad_dir":0, "bg_color41":"#673bb7", "bg_color42":"black", "bg_color43":"black"}
+
+
+{"page":5,"comment":"----------- Lader bil ------- "}
+{"id":1,"obj":"obj","x":140,"y":0,"w":660,"h":480,"bg_color":"#f4f5f5", "radius":0, "bg_grad_dir":0}
+
+{"id":2,"parentid":1,"obj":"obj","x":20,"y":20,"w":620,"h":60,"bg_color":"#c0c0c0", "border_width":2, "border_side":15, "border_color":"#585858","radius":0, "bg_grad_dir":0}
+{"id":21,"parentid":2,"obj":"label","x":10,"y":10,"w":400,"h":40,"text":"Lad med Sol Energy","text_color":"black", "align":"left", "text_font":32}
+{"id":22,"parentid":2,"obj":"switch","x":520,"y":10,"w":90,"h":40,"text_font":32,"radius":0, "radius10":0, "radius20":0, "bg_color":"#585858", "bg_color10":"#673bb7", "bg_color20":"#c0c0c0", "border_color":"#000000", "border_color10":"#000000", "border_color20":"#000000" ,"border_width":2, "border_width10":2, "border_width20":2, "bg_grad_dir":0, "bg_grad_dir10":0, "bg_grad_dir20":0}
+
+{"id":3,"parentid":1,"obj":"obj","x":20,"y":100,"w":620,"h":60,"bg_color":"#c0c0c0", "border_width":2, "border_side":15, "border_color":"#585858","radius":0, "bg_grad_dir":0}
+{"id":31,"parentid":3,"obj":"label","x":10,"y":10,"w":400,"h":40,"text":"Lad med Batteri Energy","text_color":"black", "align":"left", "text_font":32}
+{"id":32,"parentid":3,"obj":"switch","x":520,"y":10,"w":90,"h":40,"text_font":32,"radius":0, "radius10":0, "radius20":0, "bg_color":"#585858", "bg_color10":"#673bb7", "bg_color20":"#c0c0c0", "border_color":"#000000", "border_color10":"#000000", "border_color20":"#000000" ,"border_width":2, "border_width10":2, "border_width20":2, "bg_grad_dir":0, "bg_grad_dir10":0, "bg_grad_dir20":0}
+
+
+{"id":5, "parentid":1, "obj":"arc",
+  "x":40,"y":200,"w":250,"h":250,
+  "radius":70,
+  "min":0,"max":11,"val":1,
+  "line_color":"#c0c0c0","line_color10":"#673bb7",
+  "line_width":20,"line_width10":20,
+  "bg_opa":0,"border_width":0,
+  "value_str":"6 kW","value_color":"#585858","value_ofs_y":-10,
+  "pad_top":0, "pad_bottom":0, "pad_left":0, "pad_right":0}
+
+{"id":6,"parentid":1,"obj":"obj","x":340,"y":200,"w":300,"h":55,"bg_color":"#56a64b", "border_width":2, "border_side":15, "border_color":"#585858","radius":0, "bg_grad_dir":0}
+{"id":61,"parentid":6,"obj":"label","x":5,"y":5,"w":290,"h":40,"text":"CHARGING","text_color":"black", "align":"center", "text_font":32}

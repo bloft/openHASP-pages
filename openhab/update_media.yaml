@@ -1,0 +1,90 @@
+ configuration: {}
+triggers:
+  - id: "1"
+    configuration:
+      itemName: KokkenHojtaler_MediaTitle
+    type: core.ItemStateChangeTrigger
+  - id: "2"
+    configuration:
+      itemName: Kokken_Hojtaler_Current_Time
+    type: core.ItemStateChangeTrigger
+  - id: "3"
+    configuration:
+      itemName: SpotifyPlayerBridge_MediaTitle
+    type: core.ItemStateChangeTrigger
+  - id: "4"
+    configuration:
+      itemName: SpotifyPlayerBridge_MediaArtist
+    type: core.ItemStateChangeTrigger
+conditions: []
+actions:
+  - inputs: {}
+    id: "2"
+    configuration:
+      type: application/x-groovy
+      script: >-
+        import org.openhab.core.persistence.extensions.*;
+
+        def telegram = actions.get("telegram","telegram:telegramBot:8f6cfbef6c");
+
+        def mqtt = actions.get("mqtt","mqtt:broker:1779aaf1ce")
+
+
+        // hasp/broadcast/command/
+
+
+        def sendMqtt = {int page, int id, String att, Object value -> mqtt.publishMQTT(String.format("hasp/plates/command/p%sb%s.%s", page, id, att), value.toString()); }
+
+        def sendMqttItem = {int page, int id, String att, String item, String format -> sendMqtt(page, id, att, itemRegistry.getItem(item).getState().format(format)); }
+
+        def sendText = {int page, int id, String item, String format -> sendMqttItem(page, id, "text", item, format); }
+
+        def sendVal = {int page, int id, String item -> sendMqttItem(page, id, "val", item, "%f"); }
+
+        def sendImage = {int page, int id, String item -> sendMqtt(page, id, "src", String.format("http://192.168.1.10:8082/myimage/%s?w=266&h=266", item)); }
+
+
+        def toTimeString = {int s -> String.format("%d:%02d", (int)(s / 60), s % 60)}
+
+
+        try {
+
+          def title = itemRegistry.getItem("KokkenHojtaler_MediaTitle").getState();
+          def devices = itemRegistry.getItem("SpotifyPlayerBridge_ActiveDevices").getState();
+
+          if(!"UNDEF".equals(title.toString())) {
+            sendText(3, 31, "KokkenHojtaler_MediaTitle", "%s");
+            sendText(3, 41, "KokkenHojtaler_MediaArtist", "%s");
+            sendVal(3, 83, "KokkenHojtaler_Volume");
+            sendImage(3, 2, "Kokken_Hojtaler_Image");
+          } else if(devices.toString().equals("2006c1e459801ab18401efc719bdd082")) {
+            sendText(3, 31, "SpotifyPlayerBridge_MediaTitle", "%s");
+            sendText(3, 41, "SpotifyPlayerBridge_MediaArtist", "%s");
+            sendVal(3, 83, "KokkenHojtaler_Volume");
+            sendImage(3, 2, "SpotifyPlayerBridge_AlbumImage");
+          }
+
+          def state = itemRegistry.getItem("Kokken_Hojtaler_Duration").getState()
+            if(!"UNDEF".equals(state.toString())) {
+              sendMqtt(3, 61, "max", itemRegistry.getItem("Kokken_Hojtaler_Duration").getState().toUnit("s").intValue())
+              sendMqtt(3, 61, "val", itemRegistry.getItem("Kokken_Hojtaler_Current_Time").getState().toUnit("s").intValue())
+              sendMqtt(3, 62, "text", toTimeString(itemRegistry.getItem("Kokken_Hojtaler_Duration").getState().toUnit("s").intValue()))
+            } else {
+              sendMqtt(3, 61, "val", "0")
+              sendMqtt(3, 62, "text", "0:00")
+            }
+
+
+
+        } catch (InterruptedIOException e) {
+          telegram.sendTelegram("Wee");
+        } catch (Exception e) {
+          String line = "";
+          e.getStackTrace().each {
+            if(it.getFileName() != null && it.getFileName().matches("Script.*\\.groovy")) {
+              line = Integer.toString(it.getLineNumber());
+            }
+          }
+          telegram.sendTelegram(String.format("Exception(line: %s): %s", line, e.getMessage()));
+        }
+    type: script.ScriptAction
